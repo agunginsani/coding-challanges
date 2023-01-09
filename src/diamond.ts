@@ -56,3 +56,31 @@ export function recursive(n: number) {
 
   return [...top(), ...bottom()].join('\n');
 }
+
+export function tailRecursive(n: number) {
+  function generateRow(row: number) {
+    function left(i = 1, result = ''): string {
+      if (i > n) return result;
+      return left(i + 1, result + (i >= row ? '*' : ' '));
+    }
+
+    function right(i = n - 1, result = ''): string {
+      if (i === 0) return result;
+      return right(i - 1, result + (i >= row ? '*' : ' '));
+    }
+
+    return left() + right();
+  }
+
+  function top(i = 1, results: Array<string> = []): Array<string> {
+    if (i > n) return results;
+    return top(i + 1, [generateRow(i), ...results]);
+  }
+
+  function bottom(i = 2, results: Array<string> = []): Array<string> {
+    if (i > n) return results;
+    return bottom(i + 1, [...results, generateRow(i)]);
+  }
+
+  return [...top(), ...bottom()].join('\n');
+}

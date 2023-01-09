@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { normal, recursive } from './diamond';
+import { normal, recursive, tailRecursive } from './diamond';
 
 const cases: Array<[number, string]> = [
   [1, ['*'].join('\n')],
@@ -25,4 +25,8 @@ test.each(cases)('normal', (input, expected) => {
 
 test.each(cases)('recursive', (input, expected) => {
   expect(recursive(input)).toBe(expected);
+});
+
+test.each(cases)('tailRecursive', (input, expected) => {
+  expect(tailRecursive(input)).toBe(expected);
 });
