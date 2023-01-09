@@ -31,31 +31,28 @@ export function normal(n: number) {
 
 export function recursive(n: number) {
   function generateRow(row: number) {
-    let result = '';
-    const blank = ' ';
-    const totalLeft = n;
-    const totalRight = n - 1;
-
-    for (let i = 1; i <= totalLeft; i += 1) {
-      result += i >= row ? '*' : blank;
+    function left(i = 1): string {
+      if (i > n) return '';
+      return (i >= row ? '*' : ' ') + left(i + 1);
     }
 
-    for (let i = totalRight; i > 0; i -= 1) {
-      result += i >= row ? '*' : blank;
+    function right(i = n - 1): string {
+      if (i === 0) return '';
+      return (i >= row ? '*' : ' ') + right(i - 1);
     }
 
-    return result;
+    return left() + right();
   }
 
-  function normalAux(i = 1): Array<string> {
-    if (i <= n) return [...normalAux(i + 1), generateRow(i)];
+  function top(i = 1): Array<string> {
+    if (i <= n) return [...top(i + 1), generateRow(i)];
     return [];
   }
 
-  function reverseAux(i = 2): Array<string> {
-    if (i <= n) return [generateRow(i), ...reverseAux(i + 1)];
+  function bottom(i = 2): Array<string> {
+    if (i <= n) return [generateRow(i), ...bottom(i + 1)];
     return [];
   }
 
-  return [...normalAux(), ...reverseAux()].join('\n');
+  return [...top(), ...bottom()].join('\n');
 }
