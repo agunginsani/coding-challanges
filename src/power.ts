@@ -15,7 +15,7 @@ export function normal(x: number, n: number) {
   return result;
 }
 
-export function recursive(x: number, n: number) {
+export function recursive(x: number, n: number): number {
   if (n === 0) return 1;
   if (n > 0) {
     if (n === 1) return x;
@@ -25,7 +25,7 @@ export function recursive(x: number, n: number) {
   return (1 / x) * recursive(x, n + 1);
 }
 
-export function tailRecursive(x: number, n: number, result = 1) {
+export function tailRecursive(x: number, n: number, result = 1): number {
   if (n === 0) return result;
   if (n > 0) return tailRecursive(x, n - 1, result * x);
   return tailRecursive(x, n + 1, result * (1 / x));
