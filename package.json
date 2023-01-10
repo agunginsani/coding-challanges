@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "prettier . --write --ignore-unknown",
     "test": "vitest",
     "test-coverage": "vitest --coverage"
   },
