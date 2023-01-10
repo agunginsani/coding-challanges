@@ -29,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: test-coverage-${{ github.sha }}
-          path: coverage/clover.xml
+          path: coverage
   codecov:
     needs: build
     runs-on: ubuntu-latest
