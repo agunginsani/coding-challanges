@@ -29,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: test-coverage-${{ github.sha }}
-          path: coverage/lcov.info
+          path: coverage/clover.xml
   codecov:
     needs: build
     runs-on: ubuntu-latest
@@ -40,5 +40,6 @@ jobs:
           name: test-coverage-${{ github.sha }}
       - uses: codecov/codecov-action@v3
         with:
-          files: lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: clover.xml
           fail_ci_if_error: true
