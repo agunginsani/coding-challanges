@@ -25,4 +25,21 @@ jobs:
       - name: Lint
         run: pnpm prettier . --check --ignore-unknown
       - name: Test
-        run: pnpm test
+        run: pnpm test-coverage
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-coverage-${{ github.sha }}
+          path: coverage/clover.xml
+  codecov:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: test-coverage-${{ github.sha }}
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: clover.xml
+          fail_ci_if_error: true
