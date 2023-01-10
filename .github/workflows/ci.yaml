@@ -26,3 +26,12 @@ jobs:
         run: pnpm prettier . --check --ignore-unknown
       - name: Test
         run: pnpm test
+  codecov:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
