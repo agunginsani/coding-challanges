@@ -1,5 +1,5 @@
-import { expect, test } from 'vitest';
-import { normal, recursive, tailRecursive } from './power';
+import { expect, test } from "vitest";
+import { normal, recursive, tailRecursive } from "./power";
 
 const cases = [
   [-2, 2, 4],
@@ -17,14 +17,14 @@ const cases = [
   [2, 3, 8],
 ];
 
-test.each(cases)('normal(%i, %i) = %i', (x, n, expected) => {
+test.each(cases)("normal(%i, %i) = %i", (x, n, expected) => {
   expect(normal(x, n)).toBe(expected);
 });
 
-test.each(cases)('recursive(%i, %i) = %i', (x, n, expected) => {
+test.each(cases)("recursive(%i, %i) = %i", (x, n, expected) => {
   expect(recursive(x, n)).toBe(expected);
 });
 
-test.each(cases)('tailRecursive(%i, %i) = %i', (x, n, expected) => {
+test.each(cases)("tailRecursive(%i, %i) = %i", (x, n, expected) => {
   expect(tailRecursive(x, n)).toBe(expected);
 });

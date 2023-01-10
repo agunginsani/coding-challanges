@@ -23,6 +23,6 @@ jobs:
       - name: Install
         run: pnpm install
       - name: Lint
-        run: pnpm prettier --check
+        run: pnpm prettier . --check --ignore-unknown
       - name: Test
         run: pnpm test

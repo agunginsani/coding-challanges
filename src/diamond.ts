@@ -1,16 +1,16 @@
 export function normal(n: number) {
   function generateRow(row: number) {
-    let result = '';
-    const blank = ' ';
+    let result = "";
+    const blank = " ";
     const totalLeft = n;
     const totalRight = n - 1;
 
     for (let i = 1; i <= totalLeft; i += 1) {
-      result += i >= row ? '*' : blank;
+      result += i >= row ? "*" : blank;
     }
 
     for (let i = totalRight; i > 0; i -= 1) {
-      result += i >= row ? '*' : blank;
+      result += i >= row ? "*" : blank;
     }
 
     return result;
@@ -26,19 +26,19 @@ export function normal(n: number) {
     results.push(generateRow(i));
   }
 
-  return results.join('\n');
+  return results.join("\n");
 }
 
 export function recursive(n: number) {
   function generateRow(row: number) {
     function left(i = 1): string {
-      if (i > n) return '';
-      return (i >= row ? '*' : ' ') + left(i + 1);
+      if (i > n) return "";
+      return (i >= row ? "*" : " ") + left(i + 1);
     }
 
     function right(i = n - 1): string {
-      if (i === 0) return '';
-      return (i >= row ? '*' : ' ') + right(i - 1);
+      if (i === 0) return "";
+      return (i >= row ? "*" : " ") + right(i - 1);
     }
 
     return left() + right();
@@ -54,19 +54,19 @@ export function recursive(n: number) {
     return [];
   }
 
-  return [...top(), ...bottom()].join('\n');
+  return [...top(), ...bottom()].join("\n");
 }
 
 export function tailRecursive(n: number) {
   function generateRow(row: number) {
-    function left(i = 1, result = ''): string {
+    function left(i = 1, result = ""): string {
       if (i > n) return result;
-      return left(i + 1, result + (i >= row ? '*' : ' '));
+      return left(i + 1, result + (i >= row ? "*" : " "));
     }
 
-    function right(i = n - 1, result = ''): string {
+    function right(i = n - 1, result = ""): string {
       if (i === 0) return result;
-      return right(i - 1, result + (i >= row ? '*' : ' '));
+      return right(i - 1, result + (i >= row ? "*" : " "));
     }
 
     return left() + right();
@@ -82,5 +82,5 @@ export function tailRecursive(n: number) {
     return bottom(i + 1, [...results, generateRow(i)]);
   }
 
-  return [...top(), ...bottom()].join('\n');
+  return [...top(), ...bottom()].join("\n");
 }
