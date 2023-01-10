@@ -29,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: test-coverage-${{ github.sha }}
-          path: coverage
+          path: coverage/lcov.info
   codecov:
     needs: build
     runs-on: ubuntu-latest
@@ -39,5 +39,5 @@ jobs:
           name: test-coverage-${{ github.sha }}
       - uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          files: /github/workspace/lcov.info
           fail_ci_if_error: true
