@@ -21,7 +21,6 @@ export function recursive(x: number, n: number): number {
     if (n === 1) return x;
     return x * recursive(x, n - 1);
   }
-  if (n === 1) return 1 / x;
   return (1 / x) * recursive(x, n + 1);
 }
 
