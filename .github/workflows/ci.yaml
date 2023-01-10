@@ -24,12 +24,16 @@ jobs:
         run: pnpm install
       - name: Lint
         run: pnpm prettier . --check --ignore-unknown
-      - name: Test
-        run: pnpm test
   codecov:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+      - name: Test
+        run: pnpm test
       - uses: actions/checkout@master
       - uses: codecov/codecov-action@v3
         with:
