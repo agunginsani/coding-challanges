@@ -25,7 +25,7 @@ jobs:
       - name: Lint
         run: pnpm prettier . --check --ignore-unknown
       - name: Test
-        run: pnpm test
+        run: pnpm test-coverage
       - uses: actions/upload-artifact@v3
         with:
           name: test-coverage-${{ github.sha }}
