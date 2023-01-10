@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { normal, recursive, tailRecursive } from "./power";
+import { normal, recursive, tailRecursive } from "../power";
 
 const cases = [
   [-2, 2, 4],

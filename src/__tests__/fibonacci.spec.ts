@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { normal, recursive, tailRecursive } from "./fibonacci";
+import { normal, recursive, tailRecursive } from "../fibonacci";
 
 const cases = [
   [0, 0],

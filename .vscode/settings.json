@@ -1,0 +1,8 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    ".prettierrc": ".prettierignore",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "pnpm-lock.yaml"
+  }
+}

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { normal, recursive, tailRecursive } from "./diamond";
+import { normal, recursive, tailRecursive } from "../diamond";
 
 const cases: Array<[number, string]> = [
   [1, ["*"].join("\n")],
