@@ -9,12 +9,10 @@ export function normal(as: Array<number>, rotate: Array<number>) {
   });
 
   for (let i = 0; i < rotate.length; i++) {
-    let rotateModifier = rotate[i] % as.length;
-    let newVal =
-      maxIndex - rotateModifier < 0
-        ? maxIndex - rotateModifier + as.length
-        : maxIndex - rotateModifier;
-    results.push(newVal);
+    const rotateModifier = rotate[i] % as.length;
+    const temp = maxIndex - rotateModifier;
+    const newIndex = temp < 0 ? temp + as.length : temp;
+    results.push(newIndex);
   }
 
   return results;
